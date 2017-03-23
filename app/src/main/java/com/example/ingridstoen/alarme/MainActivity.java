@@ -22,7 +22,7 @@ import java.sql.ResultSetMetaData;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    Button bLogin;
+    Button bLogin; // test
     EditText etbrukernavn, etpassord, etnavn;
 
     @Override
