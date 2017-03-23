@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AlarMe</string>
+    <string name="button_login">Login</string>
+    <string name="edit_username">Username:</string>
+    <string name="edit_password">Password:</string>
+    <string name="view_welcome">Log in using your Feide username and password.</string>
+    <string name="button_course1">TDT4140 Programvareutvikling</string>
+    <string name="button_course2">TTM4100 Kommunikasjon, tjenester og nett</string>
+    <string name="button_course3">TDT4145 Databasemodellering og databasesystemer</string>
+    <string name="button_course4">TFY4125 Fysikk</string>
+    <string name="view_course1">24.03.17 - Step 5: Demonstration for Productionization Core 3</string>
+    <string name="view_course2">26.03.17 - Assignment 7 - Theory</string>
+    <string name="view_course2.2">02.04.17 - Assignment 8 - Theory</string>
+    <string name="view_course3">30.03.17 - Øving4 / Exercise 4</string>
+    <string name="view_course4">30.03.17 - preQuiz 9-2</string>
+    <string name="view_course4.2">31.03.17 - Test 3 - grunnleggende</string>
+    <string name="view_course4.3">05.05.17 - Test 3 - middels</string>
+    <string name="view_course4.4">05.05.17 - Test 2 - middels</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
