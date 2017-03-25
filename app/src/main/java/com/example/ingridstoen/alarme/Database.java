@@ -28,6 +28,10 @@ public class Database extends AsyncTask<URL, Integer, Long> {
         return this.student_id;
     }
 
+    public void SetStudent_id(int student_id){
+        this.student_id=student_id;
+    }
+
     public ArrayList<String> getList(){
         return this.courses;
 
@@ -65,14 +69,6 @@ public class Database extends AsyncTask<URL, Integer, Long> {
 
 
             setconnection();
-            getStudent_id();
-
-
-
-
-
-
-
 
         } catch (Exception e) {
             System.err.println(e);
@@ -100,19 +96,27 @@ public class Database extends AsyncTask<URL, Integer, Long> {
         pr.executeUpdate();
     }
 
-    public void getStudent_id() {
+    public void getSutdent_id(String brukernavn) throws SQLException {
         try{
-            Statement stm = connection.createStatement();
-            String query = "SELECT student_id From student WHERE username = '" + this.username + "'";
-            ResultSet rs = stm.executeQuery(query);
-            while(rs.next()){
-                this.student_id = rs.getInt("student_id");
+            Class.forName("com.mysql.jdbc.Driver");
+            setconnection();
+            Statement stmt =  connection.createStatement();
+            String sql = "SELECT student_id from Student WHERE username = '"+brukernavn+"'";
+            ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
+            while(r.next()){
+                System.out.println(r.getString(1));
 
-            }
-        }catch(Exception e){
-            System.out.println("Her skjedde det noe feil: " + e);
+
+
+            }}catch(Exception e){
+            System.out.println( "Her skjedde det noe feil:" + e);
+
 
         }
+    }
+
+
+
 
     }
 
@@ -129,11 +133,6 @@ public class Database extends AsyncTask<URL, Integer, Long> {
             courses.add(coursename);
 
         }*/
-    }
 
 
 
-<<<<<<< HEAD
-}
-=======
->>>>>>> 7e1b980e6444951952d93d2a71b5547f4383c5be
