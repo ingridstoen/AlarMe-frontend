@@ -22,10 +22,13 @@ import java.sql.ResultSetMetaData;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     Button bLogin;
+<<<<<<< HEAD
     Button button2;
     Button button3;
     Button button4;
     Button button5;
+=======
+>>>>>>> 7e1b980e6444951952d93d2a71b5547f4383c5be
     EditText etbrukernavn, etpassord;
 
     @Override
@@ -50,6 +53,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 db.setUsername(brukernavn);
                 db.setPassword(passord);
                 db.execute();
+
+                //db.getCourses();
+                //System.err.println(db.getList());
                 //new Database().execute();
                 startActivity( new Intent(this, DisplayCoursesActivity.class));
 

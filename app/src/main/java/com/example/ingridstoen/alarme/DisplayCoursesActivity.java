@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 public class DisplayCoursesActivity extends FragmentActivity {
 
-    ViewPager viewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
