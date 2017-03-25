@@ -19,6 +19,11 @@ public class Database extends AsyncTask<URL, Integer, Long> {
     int student_id;
     ArrayList<String> courses;
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
     public int selectStudent_id(){
         return this.student_id;
     }
@@ -37,6 +42,10 @@ public class Database extends AsyncTask<URL, Integer, Long> {
 
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
     public String getUsername() {
         return this.username;
     }
@@ -60,8 +69,17 @@ public class Database extends AsyncTask<URL, Integer, Long> {
             System.err.println("Cannot create connection");
         }
         try {
+<<<<<<< HEAD
+
+            setConnection();
+            getSutdent_id();
+            getCourses();
+            getAssignement();
+
+=======
             setConnection();
             //getStudent_id();
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -77,7 +95,7 @@ public class Database extends AsyncTask<URL, Integer, Long> {
         connection = DriverManager.getConnection(connectionString);
     }
 
-    /*
+
     public void save_data() throws SQLException {
         String sql = "INSERT INTO Student(username, user_password) VALUES(?,?)";
         PreparedStatement pr = connection.prepareStatement(sql);
@@ -85,22 +103,54 @@ public class Database extends AsyncTask<URL, Integer, Long> {
         pr.setString(2, this.password);
         pr.executeUpdate();
     }
-    */
 
+<<<<<<< HEAD
+
+
+    public void getSutdent_id() throws SQLException {
+=======
     public void getSutdent_id(String brukernavn) throws SQLException {
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
         try{
             Class.forName("com.mysql.jdbc.Driver");
             setConnection();
             Statement stmt =  connection.createStatement();
-            String sql = "SELECT student_id from Student WHERE username = '"+brukernavn+"'";
+            String sql = "SELECT student_id from Student WHERE username = '"+this.username+"'";
             ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
             while(r.next()){
+<<<<<<< HEAD
+                this.student_id= r.getInt(1);
+
+
+=======
                 System.out.println(r.getString(1));
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
             }}catch(Exception e){
             System.out.println( "Her skjedde det noe feil:" + e);
         }
     }
 
+<<<<<<< HEAD
+    public void getAssignement()throws SQLException {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            setConnection();
+            Statement stmt =  connection.createStatement();
+            String sql = "SELECT * from Assignment where student_id ='"+this.student_id+"'";
+            ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
+            while(r.next()){
+                System.out.println(r.getString(2) +" "+ r.getString(3) +" "+ r.getString(4));
+
+
+
+
+            }}catch(Exception e){
+            System.out.println( "error:" + e);
+
+
+        }
+
+=======
     public void getStudent_id() {
         try {
             Statement stm = connection.createStatement();
@@ -112,25 +162,44 @@ public class Database extends AsyncTask<URL, Integer, Long> {
         } catch (Exception e) {
             System.out.println("Her skjedde det noe feil: " + e);
         }
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
     }
+
 
     public void getCourses() throws SQLException {
         ArrayList<String> courses = new ArrayList<>();
+<<<<<<< HEAD
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+=======
         try {
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
             setConnection();
-            Statement st = connection.createStatement();
-            String sql = "SELECT * FROM exam WHERE student_id = '" + this.student_id + "'";
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                String coursecode = rs.getString("coursecode");
-                String coursename = rs.getString("coursename");
+            Statement stmt =  connection.createStatement();
+            String sql = "SELECT coursecode,coursename from Exam WHERE student_id = '"+this.student_id+"'";
+            ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
+            while(r.next()){
+                String coursecode = r.getString(1);
+                String coursename = r.getString(2);
                 courses.add(coursecode);
                 courses.add(coursename);
-            }
-        } catch (Exception e) {
-            System.out.println("Her skjedde det noe feil: " + e);
+
+            }}catch(Exception e){
+            System.out.println( "error:" + e);
+
+
         }
     }
+
+
+
+
+
 }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
 
 
