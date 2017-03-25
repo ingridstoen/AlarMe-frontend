@@ -32,10 +32,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.bLogin:
                 username = edit_username.getText().toString();
                 password = edit_password.getText().toString();
-                Database db = new Database();
-                db.setUsername(username);
-                db.setPassword(password);
-                db.execute();
                 startActivity(new Intent(this, DisplayCoursesActivity.class));
                 break;
             case R.id.button:
