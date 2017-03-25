@@ -4,24 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.content.Intent;
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import java.sql.PreparedStatement;
-import java.sql.*;
-import android.util.Log;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import  java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    String username, password;
+    Button button;
     Button bLogin;
+<<<<<<< HEAD
 
 
     Button button2;
@@ -31,20 +22,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     EditText etbrukernavn, etpassord;
+=======
+    EditText edit_username, edit_password;
+>>>>>>> 8b0f6795028296e0454ebbea6a1c3bc374340565
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etbrukernavn = (EditText) findViewById(R.id.etbrukernavn);
-        etpassord = (EditText) findViewById(R.id.etpassord);
+        edit_username = (EditText) findViewById(R.id.edit_username);
+        edit_password = (EditText) findViewById(R.id.edit_password);
         bLogin = (Button) findViewById(R.id.bLogin);
         bLogin.setOnClickListener(this);
+<<<<<<< HEAD
 
+=======
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(this);
+>>>>>>> 8b0f6795028296e0454ebbea6a1c3bc374340565
     }
 
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
 
         try{
             if (v.getId() == bLogin.getId()) {
@@ -74,6 +74,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         catch(Exception e){
             System.out.print(e);
+=======
+        switch (v.getId()) {
+            case R.id.bLogin:
+                username = edit_username.getText().toString();
+                password = edit_password.getText().toString();
+                startActivity(new Intent(this, DisplayCoursesActivity.class));
+                break;
+            case R.id.button:
+                startActivity(new Intent(this, RegisterUser.class));
+                break;
+>>>>>>> 8b0f6795028296e0454ebbea6a1c3bc374340565
         }
     }
 }
