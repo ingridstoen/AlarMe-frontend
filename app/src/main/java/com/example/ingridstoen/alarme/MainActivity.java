@@ -47,6 +47,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 db.setUsername(a);
                 db.setPassword(b);
                 db.execute();
+
+                //db.getCourses();
+                //System.err.println(db.getList());
                 //new Database().execute();
                 startActivity( new Intent(this, DisplayCoursesActivity.class));
 
