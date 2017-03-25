@@ -22,8 +22,8 @@ import java.sql.ResultSetMetaData;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    Button bLogin; // asdasd
-    EditText etbrukernavn, etpassord, etnavn;
+    Button bLogin;
+    EditText etbrukernavn, etpassord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

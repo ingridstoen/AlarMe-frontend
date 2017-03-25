@@ -7,12 +7,16 @@
     tools:context="com.example.ingridstoen.alarme.DisplayCoursesActivity">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_height="500dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
         android:layout_width="0dp"
-
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        android:layout_height="495dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/button2"
@@ -75,17 +79,4 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
 </android.support.constraint.ConstraintLayout>
