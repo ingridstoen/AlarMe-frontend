@@ -16,8 +16,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button button3;
     Button button4;
     Button button5;
-
-
     EditText etbrukernavn, etpassord;
     EditText edit_username, edit_password;
 
