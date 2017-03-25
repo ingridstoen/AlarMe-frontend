@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.app.Activity;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
     String username, password;
@@ -32,6 +34,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.bLogin:
                 username = edit_username.getText().toString();
                 password = edit_password.getText().toString();
+                Database db = new Database();
+                db.setUsername(username);
+                db.setPassword(password);
+                db.execute();
                 startActivity(new Intent(this, DisplayCoursesActivity.class));
                 break;
             case R.id.button:
@@ -40,20 +46,3 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 }
-/*
-        try{
-            if (v.getId() == bLogin.getId()) {
-                String username = edit_username.getText().toString();
-                String password = edit_password.getText().toString();
-                User user = new User(username, password);
-                startActivity(new Intent(this, DisplayCoursesActivity.class));
-            } else if (v.getId() == button.getId()) {
-                startActivity(new Intent(this, RegisterUser.class));
-            }
-        }
-        catch(Exception e) {
-            System.out.print(e);
-        }
-    }
-}
-*/
