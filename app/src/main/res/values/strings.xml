@@ -25,4 +25,6 @@
     <string name="view_register">Register with your Feide username and password</string>
     <string name="button_register">Register</string>
     <string name="view_not_registered">Is this your first time logging in?\nRegister new user here:</string>
+    <string name="button_calendar">View calendar</string>
+    <string name="button_courses">View courses</string>
 </resources>

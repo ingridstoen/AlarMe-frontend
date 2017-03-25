@@ -12,9 +12,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     String username, password;
     Button button;
     Button bLogin;
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
     Button button2;
     Button button3;
     Button button4;
@@ -22,9 +25,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     EditText etbrukernavn, etpassord;
+<<<<<<< HEAD
 
     EditText edit_username, edit_password;
 
+=======
+    EditText edit_username, edit_password;
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +41,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         edit_password = (EditText) findViewById(R.id.edit_password);
         bLogin = (Button) findViewById(R.id.bLogin);
         bLogin.setOnClickListener(this);
+<<<<<<< HEAD
 
 
 
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
 
+=======
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(this);
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
     }
 
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c7b7866f30fcdef7b212e7161dc481475ffaf8f3
 
         try{
             if (v.getId() == bLogin.getId()) {
@@ -67,14 +82,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, DisplayCoursesActivity.class));
 
             }
-
-
-
-
         }
         catch(Exception e){
             System.out.print(e);
-=======
         switch (v.getId()) {
             case R.id.bLogin:
                 username = edit_username.getText().toString();
@@ -84,7 +94,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.button:
                 startActivity(new Intent(this, RegisterUser.class));
                 break;
->>>>>>> 8b0f6795028296e0454ebbea6a1c3bc374340565
         }
     }
-}
+}}
