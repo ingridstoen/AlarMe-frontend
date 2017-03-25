@@ -34,4 +34,9 @@ public class DisplayCoursesActivity extends FragmentActivity {
         Intent intent = new Intent(this, DisplayCourse4.class);
         startActivity(intent);
     }
+
+    public void viewCalendar(View view) {
+        Intent intent = new Intent(this, Calendar.class);
+        startActivity(intent);
+    }
 }
