@@ -12,7 +12,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     String username, password;
     Button button;
     Button bLogin;
-<<<<<<< HEAD
+
 
 
     Button button2;
@@ -22,9 +22,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     EditText etbrukernavn, etpassord;
-=======
+
     EditText edit_username, edit_password;
->>>>>>> 8b0f6795028296e0454ebbea6a1c3bc374340565
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +34,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         edit_password = (EditText) findViewById(R.id.edit_password);
         bLogin = (Button) findViewById(R.id.bLogin);
         bLogin.setOnClickListener(this);
-<<<<<<< HEAD
 
-=======
+
+
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
->>>>>>> 8b0f6795028296e0454ebbea6a1c3bc374340565
+
     }
 
     @Override
     public void onClick(View v) {
-<<<<<<< HEAD
+
 
         try{
             if (v.getId() == bLogin.getId()) {
