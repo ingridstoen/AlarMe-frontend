@@ -45,6 +45,8 @@ public class Database extends AsyncTask<URL, Integer, Long> {
 
             setconnection();
             save_data();
+            getCourses();
+
 
 
         } catch (Exception e) {
@@ -75,4 +77,17 @@ public class Database extends AsyncTask<URL, Integer, Long> {
 
 
     }
+    public void getCourses() throws SQLException{
+        int i=0;
+        String sql= "select coursename from 'Exam'";
+        Statement stmt= connection.createStatement();
+        ResultSet rs= stmt.executeQuery(sql);
+        for (;;) {
+            while (rs.next()) {
+                i++;
+
+
+
+    }}}
+
 }
