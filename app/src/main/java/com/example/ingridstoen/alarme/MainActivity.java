@@ -7,8 +7,6 @@ import android.widget.EditText;
 import android.app.Activity;
 import android.widget.Button;
 
-import java.util.ArrayList;
-
 public class MainActivity extends Activity implements View.OnClickListener {
 
     String username, password;
