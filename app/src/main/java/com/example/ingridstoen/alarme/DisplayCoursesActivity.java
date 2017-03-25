@@ -15,9 +15,6 @@ public class DisplayCoursesActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_courses);
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(swipeAdapter);
     }
 
     public void course1(View view) {

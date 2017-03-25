@@ -21,8 +21,12 @@ import java.sql.ResultSetMetaData;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    Button bLogin; // asdasd
-    EditText etbrukernavn, etpassord, etnavn;
+    Button bLogin;
+    Button button2;
+    Button button3;
+    Button button4;
+    Button button5;
+    EditText etbrukernavn, etpassord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         etpassord = (EditText) findViewById(R.id.etpassord);
         bLogin = (Button) findViewById(R.id.bLogin);
         bLogin.setOnClickListener(this);
+
     }
 
     @Override
@@ -39,17 +44,27 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         try{
             if (v.getId() == bLogin.getId()) {
-
-                String a= etbrukernavn.getText().toString();
-                String b=etpassord.getText().toString();
+                String brukernavn = etbrukernavn.getText().toString();
+                String passord=etpassord.getText().toString();
                 Database db= new Database();
-                db.setUsername(a);
-                db.setPassword(b);
+                db.setUsername(brukernavn);
+                db.setPassword(passord);
                 db.execute();
                 //new Database().execute();
                 startActivity( new Intent(this, DisplayCoursesActivity.class));
 
-            }}
+            }
+            else if (v.getId()== bLogin.getId()){
+                String brukernavn= etbrukernavn.getText().toString();
+                String passord=etpassord.getText().toString();
+                startActivity(new Intent(this, DisplayCoursesActivity.class));
+
+            }
+
+
+
+
+        }
         catch(Exception e){
             System.out.print(e);
         }
