@@ -1,8 +1,4 @@
 package com.example.ingridstoen.alarme;
-
-/**
- * Created by aminaettayebi on 26.03.2017.
- */
 import android.os.AsyncTask;
 import java.net.URL;
 import java.sql.Connection;
@@ -13,39 +9,19 @@ import java.util.ArrayList;
 
 public class Database_Register extends AsyncTask<URL, Integer, Long> {
 
-
-/**
- * Created by ingridstoen on 23.03.2017.
- */
     Connection connection;
     String username;
     String password;
     int student_id;
-    ArrayList<String> courses;
-
-   /* public int selectStudent_id(){
-        return this.student_id;
-    }
-
-    public void SetStudent_id(int student_id){
-        this.student_id=student_id;
-    }
-
-    public ArrayList<String> getList(){
-        return this.courses;
-
-    }
-
-    public void setList( ArrayList<String> courses){
-        this.courses= courses;
-    }*/
 
 
     public String getUsername() {
+
         return this.username;
     }
 
     public String getPassword() {
+
         return this.password;
     }
 
@@ -54,8 +30,11 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
     }
 
     public void setPassword(String password) {
+
         this.password = password;
     }
+
+
 
     protected Long doInBackground(URL... urls) {
         try {
@@ -72,6 +51,7 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
         return 1L;
     }
 
+
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
         String database = "sql11163131";
@@ -81,6 +61,8 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
         connection = DriverManager.getConnection(connectionString);
     }
 
+
+
     public void save_data() throws SQLException {
         String sql = "INSERT INTO Student(username, user_password) VALUES(?,?)";
         PreparedStatement pr = connection.prepareStatement(sql);
@@ -88,72 +70,4 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
         pr.setString(2, this.password);
         pr.executeUpdate();
     }
-
-    /*public void getStudent_id(String brukernavn) throws SQLException {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            setConnection();
-            Statement stmt =  connection.createStatement();
-            String sql = "SELECT student_id from Student WHERE username = '"+this.username+"'";
-            ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
-            while(r.next()){
-                this.student_id= r.getInt(1);
-                System.out.println(r.getString(1));
-            }}catch(Exception e){
-            System.out.println( "Her skjedde det noe feil:" + e);
-        }
-    }
-
-    public void getAssignement()throws SQLException {
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            setConnection();
-            Statement stmt = connection.createStatement();
-            String sql = "SELECT * from Assignment where student_id ='" + this.student_id + "'";
-            ResultSet r = ((java.sql.Statement) stmt).executeQuery(sql);
-            while (r.next()) {
-
-            }
-        } catch(Exception e) {
-            System.out.println("error:" + e);
-        }
-    }
-
-    public void getStudent_id() {
-        try {
-            Statement stm = connection.createStatement();
-            String query = "SELECT student_id From student WHERE username = '" + this.username + "'";
-            ResultSet rs = stm.executeQuery(query);
-            while (rs.next()) {
-                this.student_id = rs.getInt("student_id");
-            }
-        } catch (Exception e) {
-            System.out.println("Her skjedde det noe feil: " + e);
-        }
-    }
-
-
-    public void getCourses() throws SQLException {
-        ArrayList<String> courses = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            setConnection();
-            Statement stmt =  connection.createStatement();
-            String sql = "SELECT coursecode,coursename from Exam WHERE student_id = '"+this.student_id+"'";
-            ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
-            while(r.next()){
-                courses.add(r.getString(2) + r.getString(3));
-                System.out.println(courses);
-            }
-        }catch(Exception e){
-            System.out.println( "error:" + e);
-
-
-        }
-    }*/
 }

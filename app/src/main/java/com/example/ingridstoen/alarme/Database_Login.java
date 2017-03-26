@@ -1,7 +1,7 @@
 package com.example.ingridstoen.alarme;
 
 import android.os.AsyncTask;
-
+import java.util.Date;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by aminaettayebi on 26.03.2017.
@@ -20,6 +21,12 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
     String password;
     int student_id;
     ArrayList<String> courses;
+    private HashMap<String, java.sql.Date> assignments;
+
+
+    public HashMap<String, java.sql.Date> getAssignments(){
+        return this.assignments;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -29,15 +36,15 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
         this.password = password;
     }
 
-    public int selectStudent_id(){
+    public int getStudent_id(){
         return this.student_id;
     }
 
-    public void SetStudent_id(int student_id){
+    public void setStudent_id(int student_id){
         this.student_id=student_id;
     }
 
-    public ArrayList<String> getList(){
+    public ArrayList<String> getCourses(){
         return this.courses;
     }
 
@@ -53,9 +60,11 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
         }
         try {
             setConnection();
-            getSutdent_id();
+            getStudent_id();
+            getCourses();
+            //getAssignments();
 
-            //getStudent_id();
+
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -71,7 +80,7 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
         connection = DriverManager.getConnection(connectionString);
     }
 
-    public void getSutdent_id() throws SQLException {
+    public void selectSutdent_id() throws SQLException {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             setConnection();
@@ -80,12 +89,14 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
             ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
             while(r.next()){
                 this.student_id= r.getInt(1);
-                System.out.println(r.getString(1));
+
             }}catch(Exception e){
             System.out.println( "Her skjedde det noe feil:" + e);
         }
     }
-    public void getCourses() throws SQLException {
+
+
+    public void addCourses() throws SQLException {
         ArrayList<String> courses = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -98,18 +109,37 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
             String sql = "SELECT coursecode,coursename from Exam WHERE student_id = '"+this.student_id+"'";
             ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
             while(r.next()){
-                String coursecode = r.getString(1);
-                String coursename = r.getString(2);
-                courses.add(coursecode);
-                courses.add(coursename);
+                courses.add(r.getString(2) + r.getString(3));
 
             }
         }catch(Exception e){
             System.out.println( "error:" + e);
 
-
         }
     }
+
+
+
+
+    public void addAssignments()throws SQLException {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            setConnection();
+            Statement stmt = connection.createStatement();
+            String sql = "SELECT * from Assignment where student_id ='" + this.student_id + "'";
+            ResultSet r = ((java.sql.Statement) stmt).executeQuery(sql);
+
+            while (r.next()) {
+                assignments.put(r.getString(2)+r.getString(3),r.getDate(4));
+            }
+        } catch(Exception e) {
+            System.out.println("error:" + e);
+        }
+    }
+
+
+
+
 
 
 

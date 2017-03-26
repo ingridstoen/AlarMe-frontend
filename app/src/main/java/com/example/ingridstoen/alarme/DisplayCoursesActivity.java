@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.HashMap;
+
 public class DisplayCoursesActivity extends FragmentActivity {
 
     @Override
@@ -17,6 +21,16 @@ public class DisplayCoursesActivity extends FragmentActivity {
 
     public void course1(View view) {
         Intent intent = new Intent(this, DisplayCourse1.class);
+        Database_Login db = new Database_Login();
+        try {
+            db.addAssignments();
+            HashMap<String, Date> assignments = db.getAssignments();
+            for (String key: assignments.keySet()) {
+
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
         startActivity(intent);
     }
 
