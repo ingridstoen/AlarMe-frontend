@@ -21,19 +21,24 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
     int student_id;
     ArrayList<String> courses;
 
-    public int selectStudent_id(){
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int selectStudent_id(){
         return this.student_id;
     }
 
     public void SetStudent_id(int student_id){
-
         this.student_id=student_id;
     }
 
     public ArrayList<String> getList(){
         return this.courses;
-
     }
 
     public void setList( ArrayList<String> courses){

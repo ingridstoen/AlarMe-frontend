@@ -28,7 +28,7 @@ public class RegisterUser extends Activity implements View.OnClickListener {
             if (v.getId() == bRegister.getId()) {
                 String username = edit_username.getText().toString();
                 String password = edit_password.getText().toString();
-                Database db = new Database();
+                Database_Register db = new Database_Register();
                 db.setUsername(username);
                 db.setPassword(password);
                 db.execute();

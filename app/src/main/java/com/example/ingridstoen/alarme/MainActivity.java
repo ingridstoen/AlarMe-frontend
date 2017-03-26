@@ -12,7 +12,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     String username, password;
     Button button;
     Button bLogin;
-    EditText etbrukernavn, etpassord;
     EditText edit_username, edit_password;
 
     @Override
@@ -31,34 +30,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        try{
-            if (v.getId() == bLogin.getId()) {
-                String brukernavn = etbrukernavn.getText().toString();
-                String passord=etpassord.getText().toString();
-                Database db= new Database();
-                db.setUsername(brukernavn);
-                db.setPassword(passord);
-                db.execute();
-
-                //db.getCourses();
-                //System.err.println(db.getList());
-                //new Database().execute();
-                startActivity( new Intent(this, DisplayCoursesActivity.class));
-
-            }
-            else if (v.getId()== bLogin.getId()){
-                String brukernavn= etbrukernavn.getText().toString();
-                String passord=etpassord.getText().toString();
-                startActivity(new Intent(this, DisplayCoursesActivity.class));
-
-            }
-        }
-        catch(Exception e){
-            System.out.print(e);
         switch (v.getId()) {
             case R.id.bLogin:
                 username = edit_username.getText().toString();
                 password = edit_password.getText().toString();
+                Database_Login db= new Database_Login();
+                db.setUsername(username);
+                db.setPassword(password);
+                db.execute();
                 startActivity(new Intent(this, DisplayCoursesActivity.class));
                 break;
             case R.id.button:
@@ -66,4 +45,4 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
         }
     }
-}}
+}
