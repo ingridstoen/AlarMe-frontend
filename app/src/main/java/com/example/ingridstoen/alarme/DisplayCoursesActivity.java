@@ -6,17 +6,53 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.app.Activity;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashMap;
 
 public class DisplayCoursesActivity extends FragmentActivity {
+    String username, password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_courses);
+
+        try{
+
+            Database_Login db= new Database_Login();
+            db.execute();
+            ListView lv= (ListView) findViewById(R.id.list);
+            ArrayAdapter ad= new ArrayAdapter(db.addCourses(),this);
+            lv.setAdapter(ad);
+
+        }
+        catch(Exception e){
+            System.out.print("e");
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public void course1(View view) {

@@ -14,11 +14,13 @@ import java.util.ArrayList;
  */
 
 public class ArrayAdapter  extends BaseAdapter {
-    ArrayList<String> names = new ArrayList<>();
+   // String [] names;
+
+    ArrayList<String> names= new ArrayList<>();
     Context ctxt;
     LayoutInflater myInflater;
 
-    public ArrayAdapter(ArrayList<String> arr, Context c) {
+    public ArrayAdapter(ArrayList<String>  arr, Context c) {
         names = arr;
         ctxt = c;
         myInflater = (LayoutInflater) ctxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -34,10 +36,12 @@ public class ArrayAdapter  extends BaseAdapter {
 
 
     public Object getItem(int arg0) {
+
         return names.get(arg0);
     }
 
     public long getItemId(int arg0) {
+
         return arg0;
     }
 
