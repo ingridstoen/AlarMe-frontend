@@ -16,8 +16,8 @@ public class RegisterUser extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-        edit_username = (EditText) findViewById(R.id.edit_username);
-        edit_password = (EditText) findViewById(R.id.edit_password);
+        edit_username = (EditText) findViewById(R.id.register_username);
+        edit_password = (EditText) findViewById(R.id.register_password);
         bRegister = (Button) findViewById(R.id.bRegister);
         bRegister.setOnClickListener(this);
     }

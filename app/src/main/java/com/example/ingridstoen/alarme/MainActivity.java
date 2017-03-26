@@ -22,35 +22,37 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edit_username = (EditText) findViewById(R.id.edit_username);
-        edit_password = (EditText) findViewById(R.id.edit_password);
+        edit_username = (EditText) findViewById(R.id.login_username);
+        edit_password = (EditText) findViewById(R.id.login_password);
         bLogin = (Button) findViewById(R.id.bLogin);
         bLogin.setOnClickListener(this);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
-        ArrayList<String> vals= new ArrayList<>(Arrays.asList("fysikk","Matte","Kjemi"));
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bLogin:
+<<<<<<< HEAD
               /*  ArrayList<String> vals= new ArrayList<>(Arrays.asList("fysikk","Matte","Kjemi"));
                 ListView lv= (ListView) findViewById(R.id.listView1);
                 ArrayAdapter ad= new ArrayAdapter(vals,this);
                 lv.setAdapter(ad);
 
+=======
+>>>>>>> 089d0dd5c68aad8a01112dc5011b4b99a36750db
                 /*username = edit_username.getText().toString();
                 password = edit_password.getText().toString();
                 Database_Login db= new Database_Login();
                 db.setUsername(username);
                 db.setPassword(password);
-                db.execute();
-                startActivity(new Intent(this, DisplayCoursesActivity.class));
-                break;*/
+                db.execute();   */
+                Intent intent = new Intent(this, DisplayCoursesActivity.class);
+                startActivity(intent);
+                break;
             case R.id.button:
                 startActivity(new Intent(this, RegisterUser.class));
                 break;
