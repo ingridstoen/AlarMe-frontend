@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bLogin:
-                ArrayList<String> vals= new ArrayList<>(Arrays.asList("fysikk","Matte","Kjemi"));
+              /*  ArrayList<String> vals= new ArrayList<>(Arrays.asList("fysikk","Matte","Kjemi"));
                 ListView lv= (ListView) findViewById(R.id.listView1);
                 ArrayAdapter ad= new ArrayAdapter(vals,this);
                 lv.setAdapter(ad);
