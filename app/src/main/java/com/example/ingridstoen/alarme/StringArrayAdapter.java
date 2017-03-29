@@ -13,17 +13,17 @@ import java.util.ArrayList;
  * Created by aminaettayebi on 26.03.2017.
  */
 
-public class ArrayAdapter  extends BaseAdapter {
-   // String [] names;
+public class StringArrayAdapter extends BaseAdapter {
+    //String [] names;
 
-    ArrayList<String> names= new ArrayList<>();
+    ArrayList<String> names = new ArrayList<>();
     Context ctxt;
     LayoutInflater myInflater;
 
-    public ArrayAdapter(ArrayList<String>  arr, Context c) {
+    public StringArrayAdapter(ArrayList<String>   arr, Context c) {
         names = arr;
         ctxt = c;
-        myInflater = (LayoutInflater) ctxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        myInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
 
@@ -48,7 +48,6 @@ public class ArrayAdapter  extends BaseAdapter {
     //main view
     public View getView(int arg0, View arg1, ViewGroup arg2) {
         //create the cell (view) and populate it with an element of the array
-
         if (arg1 == null) {
             arg1 = myInflater.inflate(android.R.layout.simple_list_item_1, arg2, false);
         }

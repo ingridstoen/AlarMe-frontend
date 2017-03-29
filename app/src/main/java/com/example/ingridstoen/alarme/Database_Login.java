@@ -1,36 +1,39 @@
 package com.example.ingridstoen.alarme;
 
-import android.os.AsyncTask;
+
 import java.util.Date;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.sql.*;
 import android.os.AsyncTask;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * Created by aminaettayebi on 26.03.2017.
  */
 
-public class Database_Login  extends AsyncTask<URL, Integer, Long> {
+public class Database_Login  {
+
+    /*private DisplayCoursesActivity dis;
     Connection connection;
+    Statement stm;
     String username;
     String password;
     int student_id;
+    ResultSet r;
 
-    private HashMap<String, java.sql.Date> assignments;
 
-    public HashMap<String, java.sql.Date> getAssignments(){
+    private ArrayList<String> courses;
+    private DisplayCoursesActivity display;
+
+    private HashMap<String, Date> assignments;
+
+    public HashMap<String, Date> getAssignments(){
+
         return this.assignments;
     }
 
@@ -43,45 +46,62 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
     }
 
     public int getStudent_id(){
+
         return this.student_id;
     }
 
     public void setStudent_id(int student_id){
+
         this.student_id=student_id;
     }
 
 
 
-    /*public ArrayList<String> getCourses(){
+    public ArrayList<String> getCourses(){
 
 
         return this.courses;
     }
 
-    public void setCourses( ArrayList<String> courses) {
+    public void setCourses(ArrayList<String> courses) {
 
         this.courses = courses;
     }
-*/
 
-    protected Long doInBackground(URL... urls) {
+
+    public Database_Login(DisplayCoursesActivity display) {
+        this.display= display;
+
+        }
+
+
+    protected void onPostExecute(ArrayList<String> courses){
+        display.setList(courses);
+
+
+    }
+
+    @Override
+    protected  ArrayList<String> doInBackground(Void...urls) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (Exception e) {
             System.err.println("Cannot create connection");
         }
         try {
-
-
+            setConnection();
             addCourses();
-            //getAssignments();
 
 
         } catch (Exception e) {
             System.err.println(e);
-        }
-        return 1L;
+        } return this.getCourses();
     }
+
+
+
+
+
 
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
@@ -94,11 +114,11 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
 
 
 
-    public void selectSutdent_id() throws SQLException {
+    /*public void selectSutdent_id() throws SQLException {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             setConnection();
-            Statement stmt =  connection.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "SELECT student_id from Student WHERE username = '"+this.username+"'";
             ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
             while(r.next()){
@@ -110,37 +130,37 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
     }
 
 
-    public ArrayList<String> addCourses() throws SQLException {
-        try{
+    public void addCourses() throws SQLException {
+        try {
             ArrayList<String> courses = new ArrayList<>();
             courses.add("amina");
-            Class.forName("com.mysql.jdbc.Driver");
-            setConnection();
-            Statement stmt =  connection.createStatement();
-            String sql = "SELECT coursecode,coursename from Exam WHERE student_id = 97";
-            ResultSet r=  ((java.sql.Statement)stmt).executeQuery(sql);
-            while(r.next()) {
-                courses.add(r.getString(2) + r.getString(3));
+            String sql = "SELECT coursecode,coursename from Exam WHERE student_id =97";
+            //stm = connection.createStatement();
+           // r = stm.executeQuery(sql);
+           // while (r.next()) {
+               // courses.add(r.getString(2) + r.getString(3));
+            //setCourses(courses);
 
-            }return courses;
-        }
 
-        catch (Exception e){
+
+
+
+        }catch (Exception e){
             System.out.print(e);
-        }return  null;
+        }
 
         }
 
 
 
 
-    public void addAssignments()throws SQLException {
+   /* public void addAssignments()throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             setConnection();
             Statement stmt = connection.createStatement();
             String sql = "SELECT * from Assignment where student_id ='" + this.student_id + "'";
-            ResultSet r = ((java.sql.Statement) stmt).executeQuery(sql);
+            ResultSet r = ((java.sql.Statement) stm).executeQuery(sql);
             while (r.next()) {
                 assignments.put(r.getString(2)+r.getString(3),r.getDate(4));
             }
@@ -148,11 +168,5 @@ public class Database_Login  extends AsyncTask<URL, Integer, Long> {
             System.out.println("error:" + e);
         }
     }
-
-
-
-
-
-
-
+*/
 }

@@ -8,10 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class RegisterUser extends Activity implements View.OnClickListener {
-
     Button bRegister;
     EditText edit_username, edit_password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,26 +19,31 @@ public class RegisterUser extends Activity implements View.OnClickListener {
         bRegister = (Button) findViewById(R.id.bRegister);
         bRegister.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
-        try{
+
+        try {
             if (v.getId() == bRegister.getId()) {
                 String username = edit_username.getText().toString();
                 String password = edit_password.getText().toString();
-                Database_Register db = new Database_Register();
-                db.setUsername(username);
-                db.setPassword(password);
-                db.execute();
-                String course1 = null;
-                String course2 = null;
-                String course3 = null;
-                String course4 = null;
-                // Gi de fire Stringene til intent
+                Database_Register d = new Database_Register();
+                d.setUsername(username);
+                d.setPassword(password);
+                System.err.print(d.getUsername() + d.getPassword());
+                d.execute();
                 startActivity( new Intent(this, DisplayCoursesActivity.class));
-            }}
-        catch(Exception e){
+            }
+        } catch(Exception e){
             System.out.print(e);
+            System.err.print("xjax");
         }
+
+
+
+
+            }
+
     }
-}
+
+
+

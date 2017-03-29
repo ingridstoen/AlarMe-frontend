@@ -14,7 +14,7 @@ public class DisplayCourse4 extends AppCompatActivity {
         setContentView(R.layout.activity_display_course4);
     }
 
-    public void setCourse1() {
+    /*public void setCourse1() {
         for (String key: course4.getAssignments().keySet()){
             //GJØR NOE MED NØKKEL
         }
@@ -28,5 +28,5 @@ public class DisplayCourse4 extends AppCompatActivity {
 
 
 
-    }
+    }*/
 }

@@ -2,51 +2,47 @@ package com.example.ingridstoen.alarme;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.app.Activity;
-import android.widget.Button;
 import android.widget.ListView;
-
+import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashMap;
-
+import android.widget.ArrayAdapter;
+import java.util.concurrent.ExecutionException;
 public class DisplayCoursesActivity extends FragmentActivity {
-    String username, password;
+    ListView listView;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    try {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_courses);
+        Database_Courses db = new Database_Courses();
+        ListView lv = (ListView) findViewById(R.id.list_view);
+        List courses = null;
+        try {
+            courses = new Database_Courses().execute().get();
+        } catch (InterruptedException e) {
 
-        try{
+            e.printStackTrace();
 
-            Database_Login db= new Database_Login();
-            db.execute();
-            ListView lv= (ListView) findViewById(R.id.list);
-            ArrayAdapter ad= new ArrayAdapter(db.addCourses(),this);
-            lv.setAdapter(ad);
+        } catch (ExecutionException e) {
 
+            e.printStackTrace();
         }
-        catch(Exception e){
-            System.out.print("e");
-        }
 
-
-
-
-
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, courses);
+        lv.setAdapter(arrayAdapter);
+        
+    }catch (Exception e){
+        e.printStackTrace();
+    }
 
 
 
@@ -54,23 +50,18 @@ public class DisplayCoursesActivity extends FragmentActivity {
 
 
     }
+
+
+
+
+
 
     public void course1(View view) {
         Intent intent = new Intent(this, DisplayCourse1.class);
-        Database_Login db = new Database_Login();
-        try {
-            db.addAssignments();
-            HashMap<String, Date> assignments = db.getAssignments();
-            for (String key: assignments.keySet()) {
-
-            }
-        } catch(SQLException e) {
-            System.out.println(e.getMessage());
-        }
         startActivity(intent);
     }
 
-    public void course2(View view) {
+    /*public void course2(View view) {
         Intent intent = new Intent(this, DisplayCourse2.class);
         startActivity(intent);
     }
@@ -88,5 +79,5 @@ public class DisplayCoursesActivity extends FragmentActivity {
     public void viewCalendar(View view) {
         Intent intent = new Intent(this, Calendar.class);
         startActivity(intent);
-    }
+    }*/
 }

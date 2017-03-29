@@ -12,7 +12,7 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
     Connection connection;
     String username;
     String password;
-    int student_id;
+
 
 
     public String getUsername() {
@@ -26,6 +26,7 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
     }
 
     public void setUsername(String username) {
+
         this.username = username;
     }
 
