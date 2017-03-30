@@ -37,7 +37,11 @@
             android:label="@string/title_activity_courses"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterUser" />
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".Calendar" />
+        <activity
+            android:name=".Calender"
+            android:label="@string/title_activity_calender"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -1,58 +1,32 @@
 package com.example.ingridstoen.alarme;
 
 import android.os.AsyncTask;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.text.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.util.Date;
-import java.util.HashMap;
 
 /**
  * Created by aminaettayebi on 29.03.2017.
  */
 
-public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
-    Connection connection;
+public class Database_Exam_Codes extends AsyncTask<List<String>, Void, List> {
+
+    List<String> courses_codes = new ArrayList<String>();
     String username;
     String password;
     int student_id;
+    Connection connection;
 
-    List<String> assignments = new ArrayList<String>();
-
-
-
-
-    public void setUsername(String username) {
-
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-
-        this.password = password;
-    }
-
-    public int getStudent_id(){
+    public int getStudent_id() {
 
         return this.student_id;
     }
-
-    public void setStudent_id(int student_id){
-
-        this.student_id=student_id;
-    }
-
-
 
 
     protected List<String> doInBackground(List... params) {
@@ -62,18 +36,18 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
             System.err.println("Cannot create connection");
         }
         try {
+
             setConnection();
             getStudent_id();
-            String sql = "SELECT course_code, assignment_name, assignment_date from Assignment WHERE student_id ='"+this.selectSutdent_id()+"'";
+            String sql = "SELECT coursecode from Exam WHERE student_id ='" + this.selectSutdent_id() + "'";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs;
             rs = stmt.executeQuery();
             while (rs.next()) {
-               assignments.add(rs.getString(1) + "  " + rs.getString(2) + " har frist : "+ rs.getString(3));
+                courses_codes.add("amina");
+                courses_codes.add(rs.getString("coursecode"));
 
             }
-
-
 
 
         } catch (Exception e) {
@@ -81,10 +55,13 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
 
 
         }
-        return assignments;
+        return courses_codes;
     }
 
 
+    protected void onPostExecute(List courses_codes) {
+        this.courses_codes = courses_codes;
+    }
 
 
     public void setConnection() throws SQLException {
@@ -97,25 +74,24 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
     }
 
     public int selectSutdent_id() throws SQLException {
-        try{
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             setConnection();
             Statement stmt = connection.createStatement();
-            String sql = "SELECT student_id from Student WHERE username = '"+MainActivity.username+"'";
-            ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
-            while(r.next()){
-                this.student_id= r.getInt(1);
+            String sql = "SELECT student_id from Student WHERE username = '" + MainActivity.username + "'";
+            ResultSet r = ((java.sql.Statement) stmt).executeQuery(sql);
+            while (r.next()) {
+                this.student_id = r.getInt(1);
 
-            }return this.student_id;
-        }catch(Exception e){
-            System.out.println( "Her skjedde det noe feil:" + e);
+            }
+            return this.student_id;
+        } catch (Exception e) {
+            System.out.println("Her skjedde det noe feil:" + e);
         }return 0;
-
-
-
-
+    }
 
 
 
 }
-}
+
+

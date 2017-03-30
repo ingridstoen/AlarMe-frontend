@@ -26,19 +26,21 @@ public class RegisterUser extends Activity implements View.OnClickListener {
             if (v.getId() == bRegister.getId()) {
                 String username = edit_username.getText().toString();
                 String password = edit_password.getText().toString();
-                Database_Register d = new Database_Register();
-                d.setUsername(username);
-                d.setPassword(password);
-                System.err.print(d.getUsername() + d.getPassword());
+                Database_Register d = new Database_Register(username,password);
                 d.execute();
-                startActivity( new Intent(this, DisplayCoursesActivity.class));
+                Intent intent= new Intent(RegisterUser.this, DisplayCoursesActivity.class);
+                // to pass data from RegisterUser.java to DisplayCoursesActivity.class
+                intent.putExtra("username",username);
+                intent.putExtra("password", password);
+                //Calling the other activity
+                startActivity(intent);
+
+                //startActivity( new Intent(this, DisplayCoursesActivity.class));
             }
         } catch(Exception e){
             System.out.print(e);
-            System.err.print("xjax");
+
         }
-
-
 
 
             }

@@ -2,27 +2,39 @@ package com.example.ingridstoen.alarme;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.content.Context;
 import android.os.AsyncTask;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.*;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.content.Intent;
 import java.sql.Connection;
 /**
  * Created by aminaettayebi on 29.03.2017.
  */
 
-
 public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
     List<String> courses = new ArrayList<String>();
+    List<String> courses_code = new ArrayList<String>();
+    int student_id;
     String username;
     String password;
-    int student_id;
     Connection connection;
+    Context context;
 
-    public void setUsername(String username) {
+
+
+    /*public void setUsername(String username) {
         this.username = username;
-    }
+    }*/
 
     public void setPassword(String password) {
         this.password = password;
@@ -33,10 +45,10 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
         return this.student_id;
     }
 
-    public void setStudent_id(int student_id){
+    /*public void setStudent_id(int student_id){
 
         this.student_id=student_id;
-    }
+    }*/
 
 
     protected List<String> doInBackground(List... params) {
@@ -47,20 +59,19 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
         }
         try {
 
-            /*String server = "sql11.freemysqlhosting.net";
-            String database = "sql11163131";
-            String user_name = "sql11163131";
-            String pass_word = "wi4gXfVvT3";
-            String connectionString = "jdbc:mysql://" + server + "/" + database + "?user=" + user_name + "&password=" + pass_word;
-            connection = DriverManager.getConnection(connectionString);
-            */
+            //Intent intent = getIntent();
+            //this.username=
+            //this.password= intent.getStringExtra("password");
+
             setConnection();
-            getStudent_id();
-            String sql = "SELECT coursecode,coursename from Exam WHERE student_id =45";
+            //selectSutdent_id();
+            String sql = "SELECT coursecode,coursename from Exam WHERE student_id ='"+this.selectSutdent_id()+"'";
+            //String sql = "SELECT coursecode,coursename from Exam WHERE student_id =119";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs;
             rs = stmt.executeQuery();
             while (rs.next()) {
+
                 courses.add(rs.getString(1) +" "+rs.getString(2));
 
             }
@@ -68,7 +79,6 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
 
         } catch (Exception e) {
             System.err.println(e);
-
 
         }
         return courses;
@@ -92,23 +102,23 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
         connection = DriverManager.getConnection(connectionString);
     }
 
-
-    public void selectSutdent_id() throws SQLException {
+    public int selectSutdent_id() throws SQLException {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             setConnection();
             Statement stmt = connection.createStatement();
-            String sql = "SELECT student_id from Student WHERE username = '"+this.username+"'";
+            //String sql = "SELECT student_id from Student WHERE username = '"+this.username+"'";
+            String sql = "SELECT student_id from Student WHERE username ='"+MainActivity.username+"'";
             ResultSet r= ((java.sql.Statement) stmt).executeQuery(sql);
             while(r.next()){
-                this.student_id= r.getInt(1);
+               this.student_id= r.getInt(1);
 
-            }}catch(Exception e){
+            }return  this.student_id;
+        }catch(Exception e){
             System.out.println( "Her skjedde det noe feil:" + e);
-        }
-    }
+        }return 0;
 
 
-}
+} }
 
 

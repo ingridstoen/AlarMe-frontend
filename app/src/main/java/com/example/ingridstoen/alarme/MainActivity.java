@@ -13,11 +13,10 @@ import java.util.Arrays;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    String username, password;
+    public static String username, password;
     Button button;
     Button bLogin;
     EditText edit_username, edit_password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,20 +34,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bLogin:
-
-              /*  ArrayList<String> vals= new ArrayList<>(Arrays.asList("fysikk","Matte","Kjemi"));
-                ListView lv= (ListView) findViewById(R.id.listView1);
-                StringArrayAdapter ad= new StringArrayAdapter(vals,this);
-                lv.setAdapter(ad);
-
-
-                /*username = edit_username.getText().toString();
-                password = edit_password.getText().toString();
-                Database_Login db= new Database_Login();
-                db.setUsername(username);
-                db.setPassword(password);
-                db.execute();   */
-                Intent intent = new Intent(this, DisplayCoursesActivity.class);
+                Intent intent = new Intent(MainActivity.this, DisplayCoursesActivity.class);
+                username= edit_username.getText().toString();
+                password= edit_password.getText().toString();
+               // intent.putExtra("username",username);
+               // intent.putExtra("password", password);
                 startActivity(intent);
                 break;
             case R.id.button:

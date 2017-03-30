@@ -27,4 +27,5 @@
     <string name="view_not_registered">Is this your first time logging in?\nRegister new user here:</string>
     <string name="button_calendar">View calendar</string>
     <string name="button_courses">View courses</string>
+    <string name="title_activity_calender">Calender</string>
 </resources>
