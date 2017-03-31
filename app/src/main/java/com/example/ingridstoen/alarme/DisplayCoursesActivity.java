@@ -17,22 +17,22 @@ import android.widget.Toolbar;
 
 
 import java.util.concurrent.ExecutionException;
-public class DisplayCoursesActivity extends FragmentActivity implements View.OnClickListener {
-    Button button;
+public class DisplayCoursesActivity extends FragmentActivity implements View.OnClickListener{
+    Button button2;
+    Button button3;
+
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_display_courses);
-            button = (Button) findViewById(R.id.button);
-            button.setOnClickListener(this);
-            Database_Courses db = new Database_Courses();
             ListView lv = (ListView) findViewById(R.id.list_view);
             List courses = null;
-            List courses_codes = null;
+
             try {
                 courses = new Database_Courses().execute().get();
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, courses);
                 lv.setAdapter(arrayAdapter);
+
             /*courses_codes = new Database_Exam_Codes().execute().get();
             ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, courses_codes);
             lv.setAdapter(arrayAdapter1);*/
@@ -61,6 +61,7 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
                     }
 
                 });
+
             } catch (InterruptedException e) {
 
                 e.printStackTrace();
@@ -72,20 +73,28 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }button2 = (Button) findViewById(R.id.button2);
+        button3= (Button)findViewById(R.id.button3) ;
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
 
 
     }
 
     public void onClick(View v) {
-       /* switch (v.getId()) {
+
+        switch (v.getId()) {
             case R.id.button2:
                 Intent intent = new Intent(DisplayCoursesActivity.this, Calender.class);
                 startActivity(intent);
                 break;
+            case R.id.button3:
+                Intent intent1 = new Intent(DisplayCoursesActivity.this, MainActivity.class);
+                startActivity(intent1);
+                break;
 
-        }*/
-    }
+
+        }
 
 
-}
+} }

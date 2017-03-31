@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.*;
+import java.util.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  * Created by aminaettayebi on 29.03.2017.
  */
@@ -58,29 +61,23 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
             System.err.println("Cannot create connection");
         }
         try {
-
-            //Intent intent = getIntent();
-            //this.username=
-            //this.password= intent.getStringExtra("password");
-
             setConnection();
-            //selectSutdent_id();
-            String sql = "SELECT coursecode,coursename from Exam WHERE student_id ='"+this.selectSutdent_id()+"'";
-            //String sql = "SELECT coursecode,coursename from Exam WHERE student_id =119";
+            String sql = "SELECT coursecode,coursename,exam_date from Exam WHERE student_id ='"+this.selectSutdent_id()+"'";
+           // String sql = "SELECT coursecode,coursename from Exam WHERE student_id =119";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs;
             rs = stmt.executeQuery();
-            while (rs.next()) {
 
-                courses.add(rs.getString(1) +" "+rs.getString(2));
+            while (rs.next()) {
+                courses.add(rs.getString("coursecode") +" "+rs.getString("coursename")+"      Date: " + rs.getString("exam_date"));
 
             }
-
 
         } catch (Exception e) {
             System.err.println(e);
 
         }
+
         return courses;
     }
 
@@ -119,6 +116,8 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
         }return 0;
 
 
-} }
+}
+
+}
 
 
