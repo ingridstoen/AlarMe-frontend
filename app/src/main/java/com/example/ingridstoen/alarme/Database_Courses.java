@@ -92,9 +92,9 @@ public class Database_Courses  extends AsyncTask <List<String>, Void, List> {
 
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
-        String database = "sql11163131";
-        String user_name = "sql11163131";
-        String pass_word = "wi4gXfVvT3";
+        String database = "sql11166748";
+        String user_name = "sql11166748";
+        String pass_word = "fPgJk4eNB2";
         String connectionString = "jdbc:mysql://" + server + "/" + database + "?user=" + user_name + "&password=" + pass_word;
         connection = DriverManager.getConnection(connectionString);
     }

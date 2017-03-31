@@ -69,7 +69,7 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
             ResultSet rs;
             rs = stmt.executeQuery();
             while (rs.next()) {
-               assignments.add(rs.getString(1) + "  " + rs.getString(2) + " har frist : "+ rs.getString(3));
+               assignments.add(rs.getString("course_code") + "  " + rs.getString("assignment_name")+" har frist: " +rs.getString("assignment_date") );
 
             }
 
@@ -89,12 +89,13 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
 
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
-        String database = "sql11163131";
-        String user_name = "sql11163131";
-        String pass_word = "wi4gXfVvT3";
+        String database = "sql11166748";
+        String user_name = "sql11166748";
+        String pass_word = "fPgJk4eNB2";
         String connectionString = "jdbc:mysql://" + server + "/" + database + "?user=" + user_name + "&password=" + pass_word;
         connection = DriverManager.getConnection(connectionString);
     }
+
 
     public int selectSutdent_id() throws SQLException {
         try{

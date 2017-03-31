@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 public class DisplayCourse1 extends AppCompatActivity {
 
-    ListView course1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,59 +23,41 @@ public class DisplayCourse1 extends AppCompatActivity {
             ListView lv = (ListView) findViewById(R.id.course1);
             List<String> assignment = null;
             List<String> courses = null;
-            List<String> assignmentTDT4140 = new ArrayList<>();
             List<String> splittedList1=null;
             List<String> splittedList2=null;
-            List<String> list1 = new ArrayList<>();
-            List<String> list2 = new ArrayList<>();
-            List<String> list3 = new ArrayList<>();
-            List<String> list4 = new ArrayList<>();
-            String coursecode1;
-            String coursecode2;
+            List<String> coursecodeC = new ArrayList<>();
+            List<String> coursecodeA = new ArrayList<>();
+            List<String> assignmentOnly = new ArrayList<>();
+            List<String> assignmentsDisplay1 = new ArrayList<>();
+
             try {
                 assignment = new Database_Assignments().execute().get();
                 courses = new Database_Courses().execute().get();
                 for (String a : courses) {
-                    String[] array1 = a.toString().split(" ", 2);
+                    //String[] array1 = a.toString().split(" ", 2);
                     splittedList1 = new ArrayList<String>(Arrays.asList(a.split(" ")));
-                    coursecode1 = splittedList1.get(0);
+                    coursecodeC.add(splittedList1.get(0));
                 }
+
+
                 for (String b : assignment) {
-                    String[] array2 = b.toString().split(" ", 1);
+                    //String[] array2 = b.toString().split(" ", 1);
                     splittedList2 = new ArrayList<String>(Arrays.asList(b.split(" ")));
-                    coursecode2 = splittedList2.get(0);
-
+                    coursecodeA.add(splittedList2.get(0));
+                    String bStripped = b.replace(splittedList2.get(0),"");
+                    assignmentOnly.add(bStripped);
                 }
-
-                for (int i = 0; i < splittedList1.size(); i++){
-                        for (int j = 0; i < splittedList2.size(); i++){
-                            if (splittedList1.get(0).equals(splittedList2.get(j))){
-                                list1.add(assignment.get(j));
-                            }
-
+                
+                for (int i = 0; i < coursecodeA.size(); i++) {
+                    if (coursecodeC.size() != 0) {
+                        if (coursecodeC.get(0).equals(coursecodeA.get(i))) {
+                            assignmentsDisplay1.add(assignmentOnly.get(i));
                         }
                     }
-
-
-
-
-                   /* for (int i = 0; i < splittedList2.size(); i++) {
-                    if (coursecode1.equals("TTM4100")) {
-                            assignmentTDT4140.add(a);
-
-                        }
+                    //Exeption her?
 
                 }
-               /*for (String a: assignment) {
-                     String[] array = a.toString().split(" ", 1);
-                     List<String> splittedList1 = new ArrayList<String>(Arrays.asList(a.split(" ")));
-                     coursecode1 = splittedList1.get(0);
-                     Log.e("Liste", coursecode1);*/
 
-                    /*for (String b : courses) {
-                        String[] array1 = b.toString().split(" ", 1);
-                        splittedList2 = new ArrayList<String>(Arrays.asList(b.split(" ")));
-                        String coursecode2 = splittedList2.get(0);*/
 
 
 
@@ -84,17 +66,13 @@ public class DisplayCourse1 extends AppCompatActivity {
 
         }
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, assignment);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, assignmentsDisplay1);
             lv.setAdapter(arrayAdapter);
 
 
             } catch (ExecutionException e) {
                 e.printStackTrace();
 
-
-                //} catch (Exception e) {
-                //  e.printStackTrace();
-                //}
 
 
             }

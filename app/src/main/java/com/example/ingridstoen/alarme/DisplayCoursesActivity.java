@@ -74,7 +74,7 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
         } catch (Exception e) {
             e.printStackTrace();
         }button2 = (Button) findViewById(R.id.button2);
-        button3= (Button)findViewById(R.id.button3) ;
+        button3= (Button)findViewById(R.id.button3);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
 
