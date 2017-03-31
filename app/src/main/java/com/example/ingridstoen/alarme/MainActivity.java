@@ -13,6 +13,9 @@ import java.util.Arrays;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+
+    //test comment
+    
     public static String username, password;
     Button button;
     Button bLogin;
