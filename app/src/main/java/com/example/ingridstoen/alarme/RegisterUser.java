@@ -21,7 +21,6 @@ public class RegisterUser extends Activity implements View.OnClickListener {
     }
     @Override
     public void onClick(View v) {
-
         try {
             if (v.getId() == bRegister.getId()) {
                 String username = edit_username.getText().toString();
@@ -34,15 +33,13 @@ public class RegisterUser extends Activity implements View.OnClickListener {
                 intent.putExtra("password", password);
                 //Calling the other activity
                 startActivity(intent);
-
                 //startActivity( new Intent(this, DisplayCoursesActivity.class));
             }
         } catch(Exception e){
             System.out.print(e);
 
         }
-
-
+        
             }
 
     }
