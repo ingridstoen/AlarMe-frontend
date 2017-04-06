@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEBE9"
+    android:background="#000"
     android:fitsSystemWindows="true"
     tools:context="com.example.ingridstoen.alarme.Calender">
 

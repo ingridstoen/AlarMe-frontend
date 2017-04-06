@@ -85,7 +85,7 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
 
         switch (v.getId()) {
             case R.id.button2:
-                Intent intent = new Intent(DisplayCoursesActivity.this, Calender.class);
+                Intent intent = new Intent(DisplayCoursesActivity.this, Calendar.class);
                 startActivity(intent);
                 break;
             case R.id.button3:
