@@ -1,6 +1,5 @@
 package com.example.ingridstoen.alarme;
 
-
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -150,7 +149,6 @@ public class Database_Login  {
         }
 
         }
-
 
 
 
