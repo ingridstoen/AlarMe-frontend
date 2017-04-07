@@ -28,6 +28,7 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
             ListView lv = (ListView) findViewById(R.id.list_view);
             List courses = null;
 
+
             try {
                 courses = new Database_Courses().execute().get();
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, courses);

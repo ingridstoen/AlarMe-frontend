@@ -39,7 +39,7 @@ public class RegisterUser extends Activity implements View.OnClickListener {
             System.out.print(e);
 
         }
-        
+
             }
 
     }

@@ -1,6 +1,9 @@
 package com.example.ingridstoen.alarme;
 
 import android.os.AsyncTask;
+
+import java.util.List;
+import android.os.AsyncTask;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,25 +17,18 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.Date;
-import java.util.HashMap;
 
 /**
- * Created by aminaettayebi on 29.03.2017.
+ * Created by aminaettayebi on 06.04.2017.
  */
 
-public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
+public class DatabaseAssignmentsCalendar extends AsyncTask<List<String>, Void, List> {
     Connection connection;
     String username;
     String password;
     int student_id;
 
-    List<String> assignments = new ArrayList<String>();
-    List<String> assignmentName = new ArrayList<String>();
-    List<String> assignmentDate = new ArrayList<String>();
-
-
-
+    List<String> databaseassignmentscalender = new ArrayList<String>();
 
     public void setUsername(String username) {
 
@@ -66,14 +62,14 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
         try {
             setConnection();
             getStudent_id();
-            String sql = "SELECT course_code, assignment_name, assignment_date from Assignment WHERE student_id ='"+this.selectSutdent_id()+"'";
+            String sql = "SELECT course_code , assignment_name, assignment_date from Assignment WHERE student_id ='"+this.selectSutdent_id()+"'";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs;
             rs = stmt.executeQuery();
             while (rs.next()) {
-                assignmentName.add(rs.getString("assignment_name"));
-                assignmentDate.add(rs.getString("assignment_date"));
-                assignments.add(rs.getString("course_code") + "  " + rs.getString("assignment_name") + " har frist: " + rs.getString("assignment_date"));
+                databaseassignmentscalender.add(rs.getString("course_code")+"  "+rs.getString("assignment_name"));
+                databaseassignmentscalender.add(rs.getString("assignment_date"));
+
 
             }
 
@@ -83,7 +79,7 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
 
 
         }
-        return assignments;
+        return databaseassignmentscalender;
     }
 
 
@@ -120,5 +116,9 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
 
 
 
+    }
 }
-}
+
+
+
+
