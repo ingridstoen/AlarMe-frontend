@@ -20,10 +20,20 @@ android {
 }
 
 dependencies {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    compile 'com.github.sundeepk:compact-calendar-view:2.0.1'
+=======
+>>>>>>> 0139e3b5404463e219df8124f3fa288670571488
     // Required -- JUnit 4 framework
     testCompile 'junit:junit:4.12'
     // Optional -- Mockito framework
     testCompile 'org.mockito:mockito-core:1.10.19'
+<<<<<<< HEAD
+=======
+>>>>>>> 7de29afa7ca3697777ba45ec59c72e4954aab81f
+>>>>>>> 0139e3b5404463e219df8124f3fa288670571488
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

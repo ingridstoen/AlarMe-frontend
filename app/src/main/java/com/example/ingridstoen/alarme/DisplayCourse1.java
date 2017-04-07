@@ -30,6 +30,7 @@ public class DisplayCourse1 extends AppCompatActivity {
             List<String> assignmentOnly = new ArrayList<>();
             List<String> assignmentsDisplay1 = new ArrayList<>();
 
+
             try {
                 assignment = new Database_Assignments().execute().get();
                 courses = new Database_Courses().execute().get();
@@ -73,12 +74,9 @@ public class DisplayCourse1 extends AppCompatActivity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
 
-
-
             }
         }
 }
-
 
 
 
