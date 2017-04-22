@@ -28,4 +28,6 @@
     <string name="button_calendar">View calendar</string>
     <string name="button_courses">View courses</string>
     <string name="title_activity_calender">Calender</string>
+    <string name="title_activity_pie_chart_course1">PieChartCourse1</string>
+    <string name="title_activity_calandar">calandar</string>
 </resources>

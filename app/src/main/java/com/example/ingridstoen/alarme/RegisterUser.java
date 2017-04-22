@@ -27,10 +27,11 @@ public class RegisterUser extends Activity implements View.OnClickListener {
                 String password = edit_password.getText().toString();
                 Database_Register d = new Database_Register(username,password);
                 d.execute();
-                Intent intent= new Intent(RegisterUser.this, DisplayCoursesActivity.class);
+                //Intent intent= new Intent(RegisterUser.this, DisplayCoursesActivity.class);
+                Intent intent= new Intent(RegisterUser.this, Splash_Screen.class);
                 // to pass data from RegisterUser.java to DisplayCoursesActivity.class
-                intent.putExtra("username",username);
-                intent.putExtra("password", password);
+                //intent.putExtra("username",username);
+                //intent.putExtra("password", password);
                 //Calling the other activity
                 startActivity(intent);
                 //startActivity( new Intent(this, DisplayCoursesActivity.class));

@@ -31,6 +31,8 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
 
             try {
                 courses = new Database_Courses().execute().get();
+
+
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, courses);
                 lv.setAdapter(arrayAdapter);
 
@@ -86,7 +88,7 @@ public class DisplayCoursesActivity extends FragmentActivity implements View.OnC
 
         switch (v.getId()) {
             case R.id.button2:
-                Intent intent = new Intent(DisplayCoursesActivity.this, Calendar.class);
+                Intent intent = new Intent(DisplayCoursesActivity.this, calandar.class);
                 startActivity(intent);
                 break;
             case R.id.button3:
