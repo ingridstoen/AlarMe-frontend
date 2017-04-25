@@ -31,7 +31,7 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
     }
 
 
-
+    //The Database_Courses extends AsyncTask and  override doInBackground method and OnPostExecute method
     protected Long doInBackground(URL... urls) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -47,7 +47,7 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
         return 1L;
     }
 
-
+  //Etablishing connection to the database
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
         String database = "sql11163131";
@@ -58,7 +58,7 @@ public class Database_Register extends AsyncTask<URL, Integer, Long> {
     }
 
 
-
+    //Save student username and password in the database
     public void save_data() throws SQLException {
         String sql = "INSERT INTO Student(username, user_password) VALUES(?,?)";
         PreparedStatement pr = connection.prepareStatement(sql);

@@ -8,9 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class RegisterUser extends Activity implements View.OnClickListener {
+
+    //Declaring variables
     Button bRegister;
     EditText edit_username, edit_password;
+
+
     @Override
+    //The method onCreate initialize the RegisterUser Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
@@ -19,22 +24,20 @@ public class RegisterUser extends Activity implements View.OnClickListener {
         bRegister = (Button) findViewById(R.id.bRegister);
         bRegister.setOnClickListener(this);
     }
+
+    // Perform action on click
     @Override
     public void onClick(View v) {
         try {
             if (v.getId() == bRegister.getId()) {
                 String username = edit_username.getText().toString();
                 String password = edit_password.getText().toString();
-                Database_Register d = new Database_Register(username,password);
-                d.execute();
-                //Intent intent= new Intent(RegisterUser.this, DisplayCoursesActivity.class);
+                Database_Register database_register = new Database_Register(username,password);
+                database_register.execute();
+                //Start Splash_Screen activity
                 Intent intent= new Intent(RegisterUser.this, Splash_Screen.class);
-                // to pass data from RegisterUser.java to DisplayCoursesActivity.class
-                //intent.putExtra("username",username);
-                //intent.putExtra("password", password);
-                //Calling the other activity
                 startActivity(intent);
-                //startActivity( new Intent(this, DisplayCoursesActivity.class));
+
             }
         } catch(Exception e){
             System.out.print(e);

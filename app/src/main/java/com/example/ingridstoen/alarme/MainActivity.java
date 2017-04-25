@@ -6,62 +6,54 @@ import android.view.View;
 import android.widget.EditText;
 import android.app.Activity;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    //test comment
-
+    //Declaring variables
     public static String username, password;
-    String password_db;
-    Button button;
-    Button bLogin;
+    Button Register;
+    Button Login;
     EditText edit_username, edit_password;
 
 
 
     @Override
+    //The method onCreate initialize the MainActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         edit_username = (EditText) findViewById(R.id.login_username);
         edit_password = (EditText) findViewById(R.id.login_password);
-        bLogin = (Button) findViewById(R.id.bLogin);
-        bLogin.setOnClickListener(this);
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(this);
-        try{
-             password_db= new ValidPassword().execute().get();
-        }catch (Exception e) {
-        e.printStackTrace();
+        Login = (Button) findViewById(R.id.Login);
+        Login.setOnClickListener(this);
+        Register = (Button) findViewById(R.id.Register);
+        Register.setOnClickListener(this);
 
-    }
 
     }
 
     @Override
-    public void onClick(View v) {
 
+
+    public void onClick(View v) {
+        // Perform action on click
         switch (v.getId()) {
-            case R.id.bLogin:
-                register();
+            case R.id.Login:
+                //Initialize and validate
+                Login();
                 if (validate()) {
                     Intent intent = new Intent(MainActivity.this, DisplayCoursesActivity.class);
                     username = edit_username.getText().toString();
                     password = edit_password.getText().toString();
-                    // intent.putExtra("username",username);
-                    // intent.putExtra("password", password);
                     startActivity(intent);
                 }else {
                     break;
                 }
                 break;
 
-            case R.id.button:
+            case R.id.Register:
                 startActivity(new Intent(this, RegisterUser.class));
                 break;
 
@@ -70,21 +62,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
 
-    public void register(){
-        initialize(); //initialize the input to string variables
-        if (!validate()){
-            Toast.makeText(this,"Signup has Failed", Toast.LENGTH_SHORT).show();
-
-        }else{
-            onSignupSucess();
+    public void Login(){
+        initialize();
+        if (!validate()) {
+            Toast.makeText(this, "Signup has Failed", Toast.LENGTH_SHORT).show();
 
         }
 
     }
 
-    public void onSignupSucess(){
 
-    }
+    //Validating  user Feide username and password
     public boolean validate(){
         boolean valid= true;
         if (username.isEmpty()){
@@ -97,6 +85,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } return valid;
     }
 
+
+    //initialize the input to string variables
     public void initialize(){
         username= edit_username.getText().toString().trim();
         password= edit_password.getText().toString().trim();

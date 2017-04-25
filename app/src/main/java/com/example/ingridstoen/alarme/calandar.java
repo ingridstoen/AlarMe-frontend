@@ -11,6 +11,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -24,10 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
-public class calandar extends AppCompatActivity {
-    List<String> inputDatabaseList = new ArrayList<>();
-
-
+public class calandar extends AppCompatActivity implements View.OnClickListener {
 
     /*
     The MIT License (MIT)
@@ -52,6 +51,8 @@ public class calandar extends AppCompatActivity {
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
     */
+
+    List<String> inputDatabaseList = new ArrayList<>();
 
         CompactCalendarView compactCalendar;
         private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
@@ -79,6 +80,8 @@ public class calandar extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_calandar);
+            Button notification= (Button) findViewById(R.id.notification);
+            notification.setOnClickListener(this);
 
             final ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(false);
@@ -138,7 +141,7 @@ public class calandar extends AppCompatActivity {
             }
 
 
-            //SETTER FORMEN TIL Å SE SLIK UT
+
             final DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
             // converts dates on string format to milliseconds, and adds to the list "assignmentDatesMilli"
             for (String dateString : assignmentDatesString) {
@@ -180,8 +183,6 @@ public class calandar extends AppCompatActivity {
 
                 }
 
-                //For å printe dato for alle dager i kalender: df.format(dateClicked.getTime())
-
                 @Override
                 public void onMonthScroll(Date firstDayOfNewMonth) {
                     actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
@@ -195,53 +196,21 @@ public class calandar extends AppCompatActivity {
             }
 
 
-    // I main:
-    NotificationManager nm;
-    boolean isNotificActive = false;
-    int notifID = 0;
-
-    public void setNotificationd(List<Long> assignmentDatesMilli) {
-         for (Long assignment: assignmentDatesMilli) {
-            String notificText = "Frist om to dager";
-
-            NotificationCompat.Builder notificBuilder =  new NotificationCompat.Builder(this)
-                    .setContentTitle("Reminder:")
-                    .setContentText(assignment+ ": " + notificText)
-                    .setTicker("Alert new reminder")
-                    .setSmallIcon(R.mipmap.ic_launcher);
-            Intent moreInfoIntent = new Intent(this, DisplayCoursesActivity.class);
-            TaskStackBuilder tStackBuilder = TaskStackBuilder.create(this);
-            tStackBuilder.addParentStack(DisplayCoursesActivity.class);
-            tStackBuilder.addNextIntent(moreInfoIntent);
-            PendingIntent pendingIntent = tStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-            notificBuilder.setContentIntent(pendingIntent);
-            nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            nm.notify(notifID, notificBuilder.build());
-            isNotificActive = true;
-        }
-    }
-
-    public void stopNotification() {
-        if (isNotificActive) {
-            nm.cancel(notifID);
-        }
-    }
 
 
+   public void onClick(View v) {
 
-    public void setAlarm(Date date) {
-        Long alertTime = date.getTime() - (0x2a300 * 1000); //to dager før frist
-        Intent alertIntent = new Intent(this, AlertReceiver.class);
-        AlarmManager alarmManager = (AlarmManager)
-                getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, 1, alertIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT));
-    }
-
-
+// Perform action on click
+        switch (v.getId()) {
+            case R.id.notification:
+                Intent intent = new Intent(calandar.this, NotificationActivity.class);
+                startActivity(intent);
+                break;
 
 
         }
+    }
+    }
 
 
 

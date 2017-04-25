@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.view.View;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 /**
@@ -14,7 +13,10 @@ import java.util.ArrayList;
  */
 
 public class StringArrayAdapter extends BaseAdapter {
-    //String [] names;
+
+
+
+    //The class extends Baseadapter,
 
     ArrayList<String> names = new ArrayList<>();
     Context ctxt;
@@ -51,7 +53,6 @@ public class StringArrayAdapter extends BaseAdapter {
         if (arg1 == null) {
             arg1 = myInflater.inflate(android.R.layout.simple_list_item_1, arg2, false);
         }
-
         TextView name = (TextView) arg1.findViewById(android.R.id.text1);
         name.setText(names.get(arg0));
         return arg1;

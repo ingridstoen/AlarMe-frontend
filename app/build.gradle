@@ -25,6 +25,7 @@ android {
 
 dependencies {
 
+
     compile 'com.github.sundeepk:compact-calendar-view:2.0.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // Required -- JUnit 4 framewor

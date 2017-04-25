@@ -15,10 +15,10 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/progressBar"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp"
-        android:id="@+id/progressBar" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/view_register"
@@ -26,18 +26,28 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="AlarMe - helps you deliver on time! \n
+        android:text="          Please wait while the content is loading...
+\n
+\n
 
-        As a student, your main priority should be studying, not worrying about deadlines. AlarMe is a smartphone application that gathers all of your deadlines in one place, and reminds you every day what needs to be done. (AlarmMe have also ability to tell you if you have delive
-the required number of approved assignments to take the course’s final examination.)
-The app connects to all your online learning platforms, and automatically notifies you of deadlines and exams.  AlarMe will also help you plan long-term projects. Divide your project into separate tasks, and check them off to monitor your progress. You decide the pace, AlarMe keeps you on track.
- "
+\n As a student, your main priority should be studying, not worrying about deadlines.
+AlarMe is a smartphone application that gathers all of your deadlines in one place, and reminds you every day what needs to be done.
+The app connects to all your online learning platforms, and automatically notifies you of deadlines and exam dates.
+\n
+\n
+
+    \n AlarMe - Deliver on time!"
+
+
+
+
 
 
         android:textAlignment="center"
         android:textSize="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/progressBar" />
+        android:layout_marginBottom="59dp"
+        android:layout_above="@+id/progressBar"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

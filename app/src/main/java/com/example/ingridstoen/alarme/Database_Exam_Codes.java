@@ -28,7 +28,7 @@ public class Database_Exam_Codes extends AsyncTask<List<String>, Void, List> {
         return this.student_id;
     }
 
-
+    //The Database_Courses extends AsyncTask and  override doInBackground method and OnPostExecute method
     protected List<String> doInBackground(List... params) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -39,6 +39,7 @@ public class Database_Exam_Codes extends AsyncTask<List<String>, Void, List> {
 
             setConnection();
             getStudent_id();
+            //Select coursecode from Exam
             String sql = "SELECT coursecode from Exam WHERE student_id ='" + this.selectSutdent_id() + "'";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs;
@@ -63,7 +64,7 @@ public class Database_Exam_Codes extends AsyncTask<List<String>, Void, List> {
         this.courses_codes = courses_codes;
     }
 
-
+    // Etablishing connection to the database
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
         String database = "sql11163131";
@@ -73,7 +74,7 @@ public class Database_Exam_Codes extends AsyncTask<List<String>, Void, List> {
         connection = DriverManager.getConnection(connectionString);
     }
 
-
+    //Select student_id with a spesific username
     public int selectSutdent_id() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");

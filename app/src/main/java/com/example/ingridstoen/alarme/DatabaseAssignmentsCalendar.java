@@ -51,7 +51,7 @@ public class DatabaseAssignmentsCalendar extends AsyncTask<List<String>, Void, L
     }
 
 
-
+    //The Database_Courses extends AsyncTask and  override doInBackground method and OnPostExecute method
 
     protected List<String> doInBackground(List... params) {
 
@@ -86,7 +86,7 @@ public class DatabaseAssignmentsCalendar extends AsyncTask<List<String>, Void, L
 
 
 
-
+    //Etablishing connection to the database
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
         String database = "sql11163131";
@@ -96,6 +96,7 @@ public class DatabaseAssignmentsCalendar extends AsyncTask<List<String>, Void, L
         connection = DriverManager.getConnection(connectionString);
     }
 
+    //Select the student id fra database with the username= MainActivity.username
 
     public int selectSutdent_id() throws SQLException {
         try{

@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ingridstoen.alarme">
 
-
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,12 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
         <activity
             android:name=".DisplayCoursesActivity"
             android:parentActivityName=".MainActivity">
 
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
+        <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -37,7 +44,6 @@
             android:name=".Calender"
             android:label="@string/title_activity_calender"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".Splash_Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,8 +53,9 @@
         </activity>
         <activity
             android:name=".calandar"
-            android:label="@string/title_activity_calandar"
-           ></activity>
+            android:label="@string/title_activity_calandar" />
+        <activity android:name=".AlarmReceiverActivity" />
+        <activity android:name=".NotificationActivity"></activity>
     </application>
 
 </manifest>

@@ -8,21 +8,35 @@
     android:background="#EFEBE9"
     tools:context="com.example.ingridstoen.alarme.calandar">
 
+
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/compactcalendar_view"
-        android:layout_width="0dp"
+        android:layout_width="460dp"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        android:layout_height="250dp"
+        android:layout_height="282dp"
         app:compactCalendarTargetHeight="250dp"
         app:compactCalendarTextSize="12sp"
-        app:compactCalendarBackgroundColor="#ffe95451"
+        app:compactCalendarBackgroundColor="@color/colorAccent"
         app:compactCalendarTextColor="#fff"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
         app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
         app:compactCalendarMultiEventIndicatorColor="#fff"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:text="Start the notification"
+        android:layout_width="296dp"
+        android:layout_height="63dp"
+        android:id="@+id/notification"
+        app:layout_constraintTop_toTopOf="@+id/compactcalendar_view"
+        android:layout_marginTop="336dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

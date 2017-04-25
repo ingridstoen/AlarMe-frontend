@@ -4,18 +4,12 @@ import android.os.AsyncTask;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.text.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.Date;
-import java.util.HashMap;
 
 /**
  * Created by aminaettayebi on 29.03.2017.
@@ -55,7 +49,7 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
     }
 
 
-
+    //The Database_Courses extends AsyncTask and  override doInBackground method and OnPostExecute method.
 
     protected List<String> doInBackground(List... params) {
         try {
@@ -88,7 +82,7 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
 
 
 
-
+    //Etablishing connection to the database
     public void setConnection() throws SQLException {
         String server = "sql11.freemysqlhosting.net";
         String database = "sql11163131";
@@ -98,7 +92,7 @@ public class Database_Assignments extends AsyncTask<List<String>, Void, List> {
         connection = DriverManager.getConnection(connectionString);
     }
 
-
+  //Select the student id fra database with the username= MainActivity.username.
     public int selectSutdent_id() throws SQLException {
         try{
             Class.forName("com.mysql.jdbc.Driver");

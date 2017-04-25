@@ -4,10 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -17,41 +15,46 @@ public class DisplayCourse3 extends AppCompatActivity {
 
 
     @Override
+    //The method onCreate initialize the DisplayCourse3
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_display_course3);
+            //Declare listview
             ListView lv = (ListView) findViewById(R.id.list_view3);
             List<String> assignment = null;
             List<String> courses = null;
-            List<String> splittedList1=null;
-            List<String> splittedList2=null;
-            List<String> coursecodeC = new ArrayList<>();
-            List<String> coursecodeA = new ArrayList<>();
+            List<String> splittedList_courses=null;
+            List<String> splittedList_assignments=null;
+            List<String> coursecode_courses = new ArrayList<>();
+            List<String> coursecode_assignments = new ArrayList<>();
             List<String> assignmentOnly = new ArrayList<>();
-            List<String> assignmentsDisplay3 = new ArrayList<>();
+            List<String> assignmentsDisplay3 = new ArrayList<>(); //A list with assignments in course3
+
             try{
                 assignment = new Database_Assignments().execute().get();
                 courses = new Database_Courses().execute().get();
                 for (String a : courses) {
-                    splittedList1 = new ArrayList<String>(Arrays.asList(a.split(" ")));
-                    coursecodeC.add(splittedList1.get(0));
+                    // Separate course code from course name
+                    splittedList_courses = new ArrayList<String>(Arrays.asList(a.split(" ")));
+                    coursecode_courses.add(splittedList_courses.get(0));
                 }
-                for (String b : assignment) {
 
-                    splittedList2 = new ArrayList<String>(Arrays.asList(b.split(" ")));
-                    coursecodeA.add(splittedList2.get(0));
-                    String bStripped = b.replace(splittedList2.get(0),"");
+                for (String b : assignment) {
+                    // Separate assignment names from assignment course code
+                    splittedList_assignments = new ArrayList<String>(Arrays.asList(b.split(" ")));
+                    coursecode_assignments.add(splittedList_assignments.get(0));
+                    String bStripped = b.replace(splittedList_assignments.get(0),"");
                     assignmentOnly.add(bStripped);
                 }
 
-                for (int i = 0; i < coursecodeA.size(); i++) {
-                    if (coursecodeC.size() >= 2) {
-                        if (coursecodeC.get(2).equals(coursecodeA.get(i))) {
+                for (int i = 0; i < coursecode_assignments.size(); i++) {
+                    if (coursecode_courses.size() >= 2) {
+                        if (coursecode_courses.get(2).equals(coursecode_assignments.get(i))) {
                             assignmentsDisplay3.add(assignmentOnly.get(i));
                         }
                     }
-                    //Exeption her?
+
 
                 }
 
@@ -62,6 +65,7 @@ public class DisplayCourse3 extends AppCompatActivity {
                 e.printStackTrace();
 
             }
+            //Display assignmentsDisplay3
 
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, assignmentsDisplay3);
             lv.setAdapter(arrayAdapter);
